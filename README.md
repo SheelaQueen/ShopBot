@@ -1,10 +1,10 @@
-# ShopBot 2
+# ShopBot 3
 ## Introduction
 
 ### Hi 👋 <br>
 
-I created a cool bot for you !
-Let me introduce you **ShopBot**, a bot aiming at helping you create your own shops and currencies to fit the needs of your community, your RP server, or anything you need.  
+I created a cool bot for you !  
+Meet **ShopBot**, a bot designed to help you create your own shops and currencies, tailored to the needs of your community, your RP server, or whatever else you need.
 <sub><sup>(See [screenshots](#-screenshots))</sup></sub>
 <br>
 
@@ -27,15 +27,15 @@ Thanks to **Discord**'s features, you can customize the permissions for each com
 
 #### ✅ Fully customizable shops, currencies, products.
 
-You can **create** **currencies**, then use them in **shops** you created, in which you can add **products**, with a name, an emoji, a description and a price.
+You can **create** **currencies** and **items**, then use them in **shops** you created, to sell **products**, with customizable **prices** and **stocks**.
 
-Of course, you can **manage** these currencies, shops and products. You can **delete** and **edit** them, if you want to change their name, description.. or get rid of them !
+Of course, you can **manage** these currencies, shops and items and products. You can **delete** and **edit** them, if you want to change their name, emoji, description.. or get rid of them !
 
 #### ✅ Shop features
 
 You can **create** **discount codes** for your shops.
 
-You can set a product to be in **limited stock** or **unlimited stock**
+You can set a product to be in **limited** or **unlimited stock**
 
 You can have products that **trigger an action** when bought (such as: give money to a user, give a role to a user, _[any other ideas?](https://github.com/roules-dev/ShopBot/issues)_)
 
@@ -52,15 +52,21 @@ Admins can **give** and **take** money to users and even **empty** an account, t
 You can setup a **log channel** to see logs about purchases, gives and takes.
 
 #### ✅ Multi language support
+The commands and UI are by default in english but they are translated, the current translation progress is :
+<!-- DO NOT EDIT - update translation progress action marker -->
+<!-- Translations - START -->
+| 🇪🇸 Spanish (Spain) | 🇫🇷 French |
+| --- | --- |
+| 76% | 81% |
+<!-- Translations - END -->
 
-The bot currently supports **English**, **Spanish** and **French**. You can help the development of the bot by [translating it](https://github.com/roules-dev/ShopBot/blob/main/locales/CONTRIBUTING.md)
+You can help the development of the bot by [translating it](https://github.com/roules-dev/ShopBot/blob/main/locales/CONTRIBUTING.md)
 
 <br>
 
 ### To be added
 
 - ❓ API to automate actions like: filling accounts; managing currencies, shops and products
-- Create a release, a precompiled version of the bot, with an easier way of installing it.
 
 See the detailed roadmap [here](https://github.com/roules-dev/ShopBot/blob/main/roadmap.md).
 <br>
@@ -72,10 +78,17 @@ If you have a feature idea you think will fit this bot, feel free to suggest it 
 ## 🚀 How to use
 
 This repo is the bot's source code, not a bot itself. <br>
-To use it, you must host it yourself. There are several methods to do this, some are free, some are paid (Be careful that your hosting solution allows file editing, sometimes called local database, otherwise all the bot's data will be lost if the server restarts). <br>
-Once you found the hoster for your bot, here are the steps to follow: <br>
+To use it, you must host it yourself. There are several methods to do this, some are free, some are paid
+> [!IMPORTANT]
+> Your hosting solution must allow file editing, sometimes called local database, otherwise all the bot's data will be lost when the server restarts
+
+Once you found the hosting solution for your bot, here are the steps to follow: <br>
 
 ### 🔧 Installing the bot
+
+
+
+https://github.com/user-attachments/assets/0d214c16-18df-4b47-8d84-477ff70cd750
 
 #### 🤖 Creating the bot
 
@@ -97,7 +110,7 @@ Once you found the hoster for your bot, here are the steps to follow: <br>
 
 Now, we'll link the code to the bot, and upload it on the server.
 
-1. You need to have [Node.js](https://nodejs.org/en) installed on the machine where you want to host the bot.
+1. You need to have [Node.js](https://nodejs.org/en) installed on the machine where you want to host the bot. (Node version >= 22.5, I recommend using LTS)
 2. Download the code from the [latest release](https://github.com/roules-dev/ShopBot/releases) and extract it from the ZIP file, open the folder where it's located, and open a terminal from here.
 3. Execute the following command
 
@@ -112,9 +125,13 @@ npm run setup
 ```
 npm run serve
 ```
-
-> Depending on your hosting solution, you may need to use a tool like `screen` (Linux) to keep the bot running in the background
-
+7. Stop it using `Ctrl+C`
+8. Upload the files (everything but the `node_modules` folder) to your hosting solution
+> [!NOTE]
+> You can also set up the bot on the vps from the beginning 
+9. Make sure Node.js is installed and the version is >= 22.5, install libs (`npm i`) and then run the bot again (`npm run serve`)
+> [!TIP]
+> Depending on your hosting solution, you may need to use a tool like `screen` (Linux) to keep the bot running in the background  
 > You can also create a routine such that this command is executed from the bot's folder each time the server is restarted
 
 All done ! You did it, your bot should be working perfectly !
@@ -122,6 +139,7 @@ If you have any problem with it, feel free to message me on Discord, or open an 
 
 <br>
 
+<!-- TODO : Update documentation -->
 ## 📝 Documentation
 
 ### Main features and commands (Admin only)
@@ -130,8 +148,8 @@ As mentionned earlier, this bot enables you to create and manage shops, currenci
 
 #### Managing Shops
 
-The shops have a name, an optionnal description and emoji.
-They also have an assigned currency. Shops can be reserved for a certain role.
+The shops have a name, an optional description and emoji.
+Shops can be reserved for a certain role.
 All of these can be edited after the Shop has been created.
 
 You can also create discount codes for the shops.
@@ -140,8 +158,8 @@ You can also create discount codes for the shops.
 
 ```
   /shops-manage
-    | create <name> <description> <emoji> <reserved-to-role?>
-    | edit <name/description/emoji/reserved-to-role> <new-value>
+    | create <name> <description> <emoji> <reserved_to_role?>
+    | edit <name/description/emoji/reserved_to_role> <new-value>
     | reorder
     | remove
 
@@ -151,39 +169,56 @@ You can also create discount codes for the shops.
 
 #### Managing Currencies
 
-The currencies have a name and an emoji.
+The currencies have a name and an optional emoji.
 All of these can be edited after the Currency has been created.
 
 ##### Commands :
 
 ```
   /currencies-manage
-    | create <name> <emoji>
+    | create <name> <emoji?>
     | edit <name/emoji> <new-value>
+    | remove
+```
+
+#### Managing Items
+
+The items have a name, and optionally a description and an emoji.
+All of these can be edited after the Currency has been created.
+
+##### Commands :
+
+```
+  /items-manage
+    | create <name> <description?> <emoji?>
+    | edit <name/description/emoji> <new-value>
     | remove
 ```
 
 #### Managing Products
 
-The products have a name, a price, an optionnal description and emoji.
+The products hold an item, have a price and optionally a set stock.
 All of these can be edited after the Product has been created.
 A product is assigned to a specific shop.
 
 You can create 'Action Products', these are products that will trigger an action when bought.
-It can be used to give money to a user, give the user a role. (That's all for now but I'm willing to add more in the future, feel free to give your suggestions in the [Issues](https://github.com/roules-dev/ShopBot/issues))
+It can be used to give money to a user, give the user a role. (That's all for now but I'm willing to add more in the future, feel free to give your suggestions [here](https://github.com/roules-dev/ShopBot/issues))
 
 ##### Commands :
 
 ```
   /products-manage
-    | add <name> <price> <description> <emoji> <action?>
-    | edit <name/price/description/emoji> <new-value>
+    | add <stock> <action?>
+    | edit <stock> <new-value?>
     | remove
 ```
+> [!TIP]
+> When using this command, you will be prompted to select an item, a shop, and you will build the price of the product, all of that with UI components to make it easier.
+
 
 #### Managing Users
 
-The users have an account and an inventory, initially empty. In addition to being able to view their account and inventory, you can give or take money to users, and empty their account.
+The users have an account and an inventory, initially empty. In addition to being able to view their account and inventory, you can give or take money or items to users, and empty their accounts.
 
 ##### Commands :
 
@@ -193,6 +228,13 @@ The users have an account and an inventory, initially empty. In addition to bein
     | give <target> <amount>
     | bulk-give <role> <amount>
     | take <target> <amount>
+```
+```
+  /inventories-manage
+    | give <target> <amount>
+    | bulk-give <role> <amount>
+    | take <target> <amount>
+    | bulk-remove-item <role>
 ```
 
 #### Edit settings:
@@ -204,7 +246,7 @@ The users have an account and an inventory, initially empty. In addition to bein
 #### How to use admin commands ?
 
 Commands that require selecting a specific Shop or Currency will prompt you to do so with a drop-down list after you executed the command.
-For example, when creating a shop (`/shops-manage create <name>`) you select the currency after sending the command, and then the shop is created.
+For example, when editing a currency's emoji (`/currencies-manage edit emoji 🪙`) you select the currency after sending the command, and then the currency is edited.
 When you give some amount of any currency to a user, you first specify the amount and then select the currency.
 When deleting any shop or currency, you also do select it after sending the command.
 
@@ -259,7 +301,7 @@ And you can do [many more things](#-documentation)... Create discount codes, add
 ### Multi language support ?
 
 Implemented ! It is community driven, the currently available languages are : English, French, Spanish. <br>
-If your language is not mentionned here, you can help the development of the bot by [translating it](https://github.com/roules-dev/ShopBot/blob/main/locales/CONTRIBUTING.md)
+If your language is not mentionned here, you can help the development of the bot by [translating it](locales/CONTRIBUTING.md)
 
 ### New features ?
 
@@ -302,11 +344,11 @@ This project is **not affiliated with, endorsed by, or associated with Discord I
 
 ## ⭐ Star History
 
-<a href="https://www.star-history.com/#roules-dev/ShopBot&Date">
+<a href="https://www.star-history.com/?repos=roules-dev%2FShopBot&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=roules-dev/ShopBot&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=roules-dev/ShopBot&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=roules-dev/ShopBot&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=roules-dev/ShopBot&type=date&theme=dark&legend=top-left&sealed_token=8pSHhAgE3f0DV4Vji_WRYG-jjp-pZ6uMQrAj_AOZwGd5WYWjSL_0jqLdAanaMo0z8uHIrmlygw-0mAIFRp0KC7oX_qmrP6XWke9I0vcR7i8VXn5sy3l3tg0dGR7VsEh2pNf84byXQwkxH8zZn7Tf9hrijaVvXr2SP4T5la_udkSIcv-oaJbP1iJa8w79" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=roules-dev/ShopBot&type=date&legend=top-left&sealed_token=8pSHhAgE3f0DV4Vji_WRYG-jjp-pZ6uMQrAj_AOZwGd5WYWjSL_0jqLdAanaMo0z8uHIrmlygw-0mAIFRp0KC7oX_qmrP6XWke9I0vcR7i8VXn5sy3l3tg0dGR7VsEh2pNf84byXQwkxH8zZn7Tf9hrijaVvXr2SP4T5la_udkSIcv-oaJbP1iJa8w79" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=roules-dev/ShopBot&type=date&legend=top-left&sealed_token=8pSHhAgE3f0DV4Vji_WRYG-jjp-pZ6uMQrAj_AOZwGd5WYWjSL_0jqLdAanaMo0z8uHIrmlygw-0mAIFRp0KC7oX_qmrP6XWke9I0vcR7i8VXn5sy3l3tg0dGR7VsEh2pNf84byXQwkxH8zZn7Tf9hrijaVvXr2SP4T5la_udkSIcv-oaJbP1iJa8w79" />
  </picture>
 </a>
 
